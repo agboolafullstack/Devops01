@@ -1,0 +1,14 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+ annotations:
+ name: product-node
+ namespace: products
+spec:
+ maxReplicas: 5
+ minReplicas: 1
+ scaleTargetRef:
+  apiVersion: extensions/v1
+  kind: Deployment
+  name: product-node
+ targetCPUUtilizationPercentage: 1
